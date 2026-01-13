@@ -1,4 +1,4 @@
-# Projet Terraform - DataCorp Training
+# Projet Terraform
 # Infrastructure Azure pour Data Engineering
 
 ## 📋 Contexte
@@ -295,10 +295,6 @@ az vm list-usage --location "France Central" --output table
 - [Provider AzureRM](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
 - [Azure CLI Documentation](https://docs.microsoft.com/cli/azure/)
 - [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/)
-
-## 👨‍💻 Auteur
-
-Projet réalisé dans le cadre de la formation DataCorp - Data Engineering
 
 ---
 
