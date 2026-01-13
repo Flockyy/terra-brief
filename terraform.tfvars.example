@@ -1,0 +1,27 @@
+# Exemple de fichier terraform.tfvars
+# Copier ce fichier vers terraform.tfvars et personnaliser les valeurs
+
+project_name = "datacorp"
+environment  = "dev"
+location     = "France Central"
+
+# Configuration VM
+vm_size           = "Standard_B1s"
+vm_admin_username = "azureuser"
+# vm_admin_password = "VotreMotDePasseSecurise!" # À définir via variable d'environnement
+
+# Configuration Storage
+storage_account_tier             = "Standard"
+storage_account_replication_type = "LRS"
+blob_container_name              = "data-container"
+
+# Configuration Web App
+app_service_plan_sku = "F1"
+
+# Tags
+tags = {
+  Project     = "DataCorp Training"
+  ManagedBy   = "Terraform"
+  Environment = "dev"
+  Owner       = "Votre Nom"
+}
