@@ -1,12 +1,12 @@
 # Outputs Resource Group
 output "resource_group_name" {
   description = "Nom du resource group principal"
-  value       = azurerm_resource_group.main.name
+  value       = data.azurerm_resource_group.main.name
 }
 
 output "resource_group_location" {
   description = "Localisation du resource group"
-  value       = azurerm_resource_group.main.location
+  value       = data.azurerm_resource_group.main.location
 }
 
 # Outputs VM

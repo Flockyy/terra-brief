@@ -1,16 +1,14 @@
-# Resource Group principal
-resource "azurerm_resource_group" "main" {
-  name     = "${var.project_name}-${var.environment}-rg"
-  location = var.location
-  tags     = var.tags
+# Use existing Resource Group
+data "azurerm_resource_group" "main" {
+  name = "fabgrallRG"
 }
 
 # Module VM
 module "virtual_machine" {
   source = "./modules/vm"
 
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
+  resource_group_name = data.azurerm_resource_group.main.name
+  location            = data.azurerm_resource_group.main.location
   project_name        = var.project_name
   environment         = var.environment
   vm_size             = var.vm_size
@@ -23,8 +21,8 @@ module "virtual_machine" {
 module "storage" {
   source = "./modules/storage"
 
-  resource_group_name      = azurerm_resource_group.main.name
-  location                 = azurerm_resource_group.main.location
+  resource_group_name      = data.azurerm_resource_group.main.name
+  location                 = data.azurerm_resource_group.main.location
   project_name             = var.project_name
   environment              = var.environment
   account_tier             = var.storage_account_tier
@@ -37,8 +35,8 @@ module "storage" {
 module "webapp" {
   source = "./modules/webapp"
 
-  resource_group_name  = azurerm_resource_group.main.name
-  location             = azurerm_resource_group.main.location
+  resource_group_name  = data.azurerm_resource_group.main.name
+  location             = data.azurerm_resource_group.main.location
   project_name         = var.project_name
   environment          = var.environment
   app_service_plan_sku = var.app_service_plan_sku
